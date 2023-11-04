@@ -2,6 +2,9 @@ package org.example;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+//        SlangGUI ui = new SlangGUI();
+//        ui.createAndShowGUI();
+        SlangDictionary slang_dict = new SlangDictionary();
+        slang_dict.getSlangData();
     }
 }
