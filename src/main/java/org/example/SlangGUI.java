@@ -4,39 +4,93 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.List;
 
-class PopUpFrame extends JFrame implements ActionListener{
+class SearchPopUpFrame extends JFrame implements ActionListener{
     Popup popup;
     String input;
-    public void getInputActionPerformed(String actionCommand, JTextField textField) {
-        if(actionCommand.equals("Search")) {
-            input = textField.getText();
-            System.out.println(input);
-        }
-    }
-    PopUpFrame(){
-        JFrame frame = new JFrame("Search by word");
-        frame.setSize(400, 400);
-
-        PopupFactory pf = new PopupFactory();
+    List<String> output = new ArrayList<String>();
+    public SlangDictionary slangDict = new SlangDictionary();
+    public static JButton button = new JButton();
+    public static JTextField inputField = new JTextField(20);
+    public static JTextArea outputArea = new JTextArea(10, 20);
+    SearchPopUpFrame(int searchType){
+        JFrame frame = new JFrame();
+        PopupFactory popupFactory = new PopupFactory();
         JPanel panel = new JPanel();
-        JTextField textField = new JTextField(20);
+        JPanel inputPanel = new JPanel();
+        JScrollPane scroller = new JScrollPane(outputArea);
 
-        popup = pf.getPopup(frame, panel, 180, 100);
+        if(searchType == 0){
+            frame.setTitle("Search by word");
+        }
+        else if(searchType == 1){
+            frame.setTitle("Search by definition");
+        }
 
-        JButton button = new JButton("Search");
+        popup = popupFactory.getPopup(frame, panel, 180, 100);
+
+        frame.setSize(300, 300);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+
+        button = new JButton("Search");
         button.addActionListener(this);
         button.setActionCommand("Search");
 
-        JPanel p1 = new JPanel();
-        p1.add(textField);
-        p1.add(button);
+        outputArea.setEditable(false);
+        scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
-        getInputActionPerformed(button.getActionCommand(), textField);
+        panel.add(scroller);
+        inputPanel.add(inputField);
+        inputPanel.add(button);
+        panel.add(inputPanel);
 
-        frame.add(p1);
+        SearchPopUpFrame.button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                input = inputField.getText();
+                inputField.setText("");
+                outputArea.setText("");
+
+                slangDict.getSlangData();
+
+                if(searchType == 0){
+                    output = slangDict.searchByWord(input.toUpperCase());
+                }
+                else if(searchType == 1){
+                    output = slangDict.searchByDefinition(input);
+                    System.out.println(output);
+                }
+
+                if(output == null || output.size() == 0){
+                    outputArea.append("Not found");
+                }
+                else{
+                    for (String str : output){
+                        outputArea.append(str);
+                        outputArea.append("\n");
+                    }
+                }
+            }
+        });
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent event) {
+                outputArea.setText("");
+            }
+        });
+
+        frame.getContentPane().add(BorderLayout.CENTER, panel);
+        frame.show();
     }
+
     public void actionPerformed(ActionEvent ae){
         popup.show();
     }
@@ -44,15 +98,14 @@ class PopUpFrame extends JFrame implements ActionListener{
 class ActionHandle implements ActionListener{
     public void actionPerformed(ActionEvent ae){
         String action = ae.getActionCommand();
-        SlangDictionary sd = new SlangDictionary();
 
         switch (Integer.parseInt(action)){
             case 0:{
-                PopUpFrame p = new PopUpFrame();
+                SearchPopUpFrame frame = new SearchPopUpFrame(0);
                 break;
             }
             case 1:{
-                System.out.println("Search by definition");
+                SearchPopUpFrame frame = new SearchPopUpFrame(1);
                 break;
             }
             case 2:{
@@ -99,6 +152,7 @@ public class SlangGUI extends JPanel{
         setLayout(new BorderLayout());
 
         JPanel panel = new JPanel();
+        panel.setPreferredSize(new Dimension(600, 600));
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.add(Box.createRigidArea(new Dimension(0,30)));
 
