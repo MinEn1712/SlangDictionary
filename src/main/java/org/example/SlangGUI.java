@@ -4,14 +4,51 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
+class PopUpFrame extends JFrame implements ActionListener{
+    Popup popup;
+    String input;
+    public void getInputActionPerformed(String actionCommand, JTextField textField) {
+        if(actionCommand.equals("Search")) {
+            input = textField.getText();
+            System.out.println(input);
+        }
+    }
+    PopUpFrame(){
+        JFrame frame = new JFrame("Search by word");
+        frame.setSize(400, 400);
+
+        PopupFactory pf = new PopupFactory();
+        JPanel panel = new JPanel();
+        JTextField textField = new JTextField(20);
+
+        popup = pf.getPopup(frame, panel, 180, 100);
+
+        JButton button = new JButton("Search");
+        button.addActionListener(this);
+        button.setActionCommand("Search");
+
+        JPanel p1 = new JPanel();
+        p1.add(textField);
+        p1.add(button);
+
+        getInputActionPerformed(button.getActionCommand(), textField);
+
+        frame.add(p1);
+    }
+    public void actionPerformed(ActionEvent ae){
+        popup.show();
+    }
+}
 class ActionHandle implements ActionListener{
     public void actionPerformed(ActionEvent ae){
         String action = ae.getActionCommand();
+        SlangDictionary sd = new SlangDictionary();
 
         switch (Integer.parseInt(action)){
             case 0:{
-                System.out.println("Search by word");
+                PopUpFrame p = new PopUpFrame();
                 break;
             }
             case 1:{

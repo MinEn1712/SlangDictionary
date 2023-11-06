@@ -6,5 +6,7 @@ public class Main {
 //        ui.createAndShowGUI();
         SlangDictionary slang_dict = new SlangDictionary();
         slang_dict.getSlangData();
+//        slang_dict.searchByWord(":)");
+//        slang_dict.searchByDefinition("Happy");
     }
 }
