@@ -8,7 +8,7 @@ public class SlangDictionary {
     public List<String> history = new ArrayList<>();
     public void getSlangData(){
         try{
-            FileReader fr = new FileReader("slangUpdated.txt");
+            FileReader fr = new FileReader("slang.txt");
             BufferedReader br = new BufferedReader(fr);
             String buffer;
 
@@ -106,5 +106,47 @@ public class SlangDictionary {
             saveSlangDictionary();
             System.out.println("Deleted");
         }
+    }
+
+    public void resetSlangData(){
+        try{
+            FileReader fr = new FileReader("slang.txt");
+            BufferedReader br = new BufferedReader(fr);
+            String buffer;
+
+            dictionary.clear();
+
+            while((buffer = br.readLine()) != null) {
+                if (buffer.contains("`")) {
+                    String[] str = buffer.split("`");
+                    String[] def = str[1].split("\\|");
+                    for(int i = 0; i < def.length; i++){
+                        def[i] = def[i].stripLeading();
+                    }
+                    List<String> temp = Arrays.asList(def);
+                    dictionary.put(str[0], temp);
+                }
+            }
+
+            br.close();
+            fr.close();
+        }
+        catch (IOException e){
+            System.out.println("An error occurred.");
+        }
+    }
+
+    public String randomSlang(){
+        Object[] slangs = dictionary.keySet().toArray();
+        Object randomSlang = slangs[new Random().nextInt(slangs.length)];
+        return (String) randomSlang;
+    }
+
+    public void quizSlang(){
+
+    }
+
+    public void quizDefinition(){
+
     }
 }

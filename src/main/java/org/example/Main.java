@@ -14,8 +14,13 @@ public class Main {
         System.out.println(slang_dict.getHistory());
 
         List<String> def = new ArrayList<>();
-//        def.add("Nguoi thanh nien bung bu");
-//        slang_dict.addSlang("NTNBB", def);
-        slang_dict.deleteSlang("NTNBB");
+        def.add("Nguoi thanh nien bung bu");
+        slang_dict.addSlang("NTNBB", def);
+        System.out.println(slang_dict.searchByWord("NTNBB"));
+
+        System.out.println(slang_dict.randomSlang());
+//        slang_dict.resetSlangData();
+//        System.out.println(slang_dict.searchByWord("NTNBB"));
+//        slang_dict.deleteSlang("NTNBB");
     }
 }
