@@ -113,19 +113,13 @@ public class SlangDictionary {
         System.out.println("Edit");
     }
     public void deleteSlang(String word){
-        if(searchByWord(word) == null){
-            System.out.println("Word not found");
-        }
-        else{
-            dictionary.remove(word);
-            saveSlangDictionary();
-            System.out.println("Deleted");
-        }
+        dictionary.remove(word);
+        saveSlangDictionary();
     }
 
     public void resetSlangData(){
         try{
-            FileReader fr = new FileReader("slangUpdated.txt");
+            FileReader fr = new FileReader("slang.txt");
             BufferedReader br = new BufferedReader(fr);
             String prevKey = "";
             String buffer;

@@ -108,6 +108,47 @@ class PopUpFrame extends JFrame implements ActionListener{
                 frame.show();
                 break;
             }
+            case 4:{
+                frame.setTitle("Delete a slang");
+                frame.setSize(300, 70);
+
+                JTextField inputField = new JTextField(20);
+
+                button = new JButton("Search");
+                button.addActionListener(this);
+                button.setActionCommand("Search");
+
+                inputPanel.add(inputField);
+                inputPanel.add(button);
+                panel.add(inputPanel);
+
+                PopUpFrame.button.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        input = inputField.getText();
+                        inputField.setText("");
+                        output = slangDict.searchByWord(input.toUpperCase());
+
+                        if(output == null || output.size() == 0){
+                            JOptionPane.showMessageDialog(frame,
+                                    "Delete a slang",
+                                    "Word not found!",
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
+                        else{
+                            slangDict.deleteSlang(input);
+                            JOptionPane.showMessageDialog(frame,
+                                    "Delete a slang",
+                                    "Word deleted.",
+                                    JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    }
+                });
+
+                frame.add(panel);
+                frame.show();
+                break;
+            }
             case 5:{
                 frame.setSize(300, 200);
 
@@ -221,7 +262,7 @@ class ActionHandle implements ActionListener{
                 break;
             }
             case 4:{
-                System.out.println("Delete a slang");
+                PopUpFrame frame = new PopUpFrame(4, slangDict);
                 break;
             }
             case 5:{
