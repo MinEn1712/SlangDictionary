@@ -47,13 +47,17 @@ public class SlangDictionary {
     }
     public List<String> searchByDefinition(String def){
         List<String> words = new ArrayList<>();
-        if(words != null){
-            history.add(def);
-            for(String word: dictionary.keySet()){
-                if(dictionary.get(word).contains(def)){
-                    words.add(word);
-                }
+        boolean foundWord = false;
+
+        for(String word : dictionary.keySet()){
+            if(dictionary.get(word).contains(def)){
+                words.add(word);
+                foundWord = true;
             }
+        }
+
+        if(foundWord){
+            history.add(def);
         }
         return words;
     }

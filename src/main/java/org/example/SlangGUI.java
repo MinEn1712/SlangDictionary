@@ -18,6 +18,7 @@ class PopUpFrame extends JFrame implements ActionListener{
     PopUpFrame(int userChoice, SlangDictionary slangDict){
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
+        JPanel inputPanel = new JPanel();
         JScrollPane scroller = new JScrollPane(outputArea);
         PopupFactory popupFactory = new PopupFactory();
 
@@ -35,7 +36,6 @@ class PopUpFrame extends JFrame implements ActionListener{
                     frame.setTitle("Search by definition");
                 }
 
-                JPanel inputPanel = new JPanel();
                 JTextField inputField = new JTextField(20);
 
                 frame.setSize(300, 200);
@@ -80,9 +80,66 @@ class PopUpFrame extends JFrame implements ActionListener{
                 });
 
                 frame.getContentPane().add(BorderLayout.CENTER, panel);
+                frame.show();
+                break;
+            }
+            case 2:{
+                frame.setTitle("Add a slang");
+                inputPanel.setLayout(new BoxLayout(inputPanel, BoxLayout.PAGE_AXIS));
+
+                JPanel inputWordPanel = new JPanel(new FlowLayout());
+                JPanel inputDefPanel = new JPanel(new FlowLayout());
+                JLabel labelInputWord = new JLabel("New word");
+                JLabel labelInputDef = new JLabel("New definition");
+                JTextField inputWord = new JTextField(20);
+                JTextField inputDef = new JTextField(20);
+
+                frame.setSize(400, 200);
+
+                inputWordPanel.add(labelInputWord);
+                inputWordPanel.add(inputWord);
+                inputDefPanel.add(labelInputDef);
+                inputDefPanel.add(inputDef);
+                inputPanel.add(inputWordPanel);
+                inputPanel.add(inputDefPanel);
+
+                panel.add(inputPanel);
+                frame.add(panel);
+                frame.show();
+                break;
+            }
+            case 5:{
+                frame.setSize(300, 200);
+
+                String random = "";
+                String word = slangDict.randomSlang();
+                List<String> defs = new ArrayList<>(slangDict.searchByWord(word));
+
+                random += word + ": ";
+                if(defs.size() == 1){
+                    random += defs.get(0) + ".";
+                }
+                else{
+                    for(int i = 0; i < defs.size(); i++){
+                        int index = i + 1;
+                        if(i != defs.size() - 1){
+                            random += index + ". " + defs.get(i) + "; ";
+                        }
+                        else{
+                            random += index + ". " + defs.get(i) + ".";
+                        }
+                    }
+                }
+
+                JOptionPane.showMessageDialog(frame,
+                        random,
+                        "Random slang generator",
+                        JOptionPane.PLAIN_MESSAGE);
+
                 break;
             }
             case 6:{
+                frame.setTitle("History");
                 frame.setSize(300, 200);
 
                 outputArea.setEditable(false);
@@ -97,18 +154,27 @@ class PopUpFrame extends JFrame implements ActionListener{
 
                 panel.add(scroller);
                 frame.add(panel);
+                frame.show();
                 break;
             }
             case 7:{
+                frame.setTitle("Reset");
+
                 slangDict.resetSlangData();
                 frame.setSize(400, 70);
 
-                JLabel label = new JLabel("Slang dictionary has been reset.");
-                label.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-                label.setFont(new Font("Verdana", Font.BOLD, 16));
-                panel.add(label);
+                JOptionPane.showMessageDialog(frame,
+                        "Slang dictionary has been reset.",
+                        "Reset",
+                        JOptionPane.INFORMATION_MESSAGE);
 
-                frame.add(panel);
+                break;
+            }
+            case 8:{
+                JOptionPane.showMessageDialog(frame,
+                        "Message Example",
+                        "Title Example",
+                        JOptionPane.INFORMATION_MESSAGE);
                 break;
             }
             default:{
@@ -123,7 +189,6 @@ class PopUpFrame extends JFrame implements ActionListener{
                 outputArea.setText("");
             }
         });
-        frame.show();
     }
 
     public void actionPerformed(ActionEvent ae){
@@ -148,7 +213,7 @@ class ActionHandle implements ActionListener{
                 break;
             }
             case 2:{
-                System.out.println("Add a slang");
+                PopUpFrame frame = new PopUpFrame(2, slangDict);
                 break;
             }
             case 3:{
@@ -160,7 +225,7 @@ class ActionHandle implements ActionListener{
                 break;
             }
             case 5:{
-                System.out.println("Generate a random slang");
+                PopUpFrame frame = new PopUpFrame(5, slangDict);
                 break;
             }
             case 6:{
@@ -172,7 +237,7 @@ class ActionHandle implements ActionListener{
                 break;
             }
             case 8:{
-                System.out.println("Slang quiz");
+                PopUpFrame frame = new PopUpFrame(8, slangDict);
                 break;
             }
             case 9:{
