@@ -4,12 +4,13 @@ import java.io.*;
 import java.util.*;
 
 public class SlangDictionary {
-    public HashMap<String, List<String>> dictionary = new HashMap<>();
-    public List<String> history = new ArrayList<>();
+    public static HashMap<String, List<String>> dictionary = new HashMap<>();
+    public static List<String> history = new ArrayList<>();
     public void getSlangData(){
         try{
-            FileReader fr = new FileReader("slang.txt");
+            FileReader fr = new FileReader("slangUpdated.txt");
             BufferedReader br = new BufferedReader(fr);
+            String prevKey = "";
             String buffer;
 
             while((buffer = br.readLine()) != null) {
@@ -19,8 +20,14 @@ public class SlangDictionary {
                     for(int i = 0; i < def.length; i++){
                         def[i] = def[i].stripLeading();
                     }
-                    List<String> temp = Arrays.asList(def);
-                    dictionary.put(str[0], temp);
+                    List<String> defs = Arrays.asList(def);
+                    dictionary.put(str[0], defs);
+                    prevKey = str[0];
+                }
+                else{
+                    List<String> defs = new ArrayList<>(dictionary.get(prevKey));
+                    defs.add(buffer);
+                    dictionary.replace(prevKey, defs);
                 }
             }
 
@@ -33,21 +40,25 @@ public class SlangDictionary {
     }
     public List<String> searchByWord(String word){
         List<String> def = dictionary.get(word);
-        history.add(word);
+        if(def != null){
+            history.add(word);
+        }
         return def;
     }
     public List<String> searchByDefinition(String def){
         List<String> words = new ArrayList<>();
-        history.add(def);
-        for(String word: dictionary.keySet()){
-            if(dictionary.get(word).contains(def)){
-                words.add(word);
+        if(words != null){
+            history.add(def);
+            for(String word: dictionary.keySet()){
+                if(dictionary.get(word).contains(def)){
+                    words.add(word);
+                }
             }
         }
         return words;
     }
     public List<String> getHistory(){
-        return this.history;
+        return history;
     }
     public void saveSlangDictionary(){
         try {
@@ -110,11 +121,13 @@ public class SlangDictionary {
 
     public void resetSlangData(){
         try{
-            FileReader fr = new FileReader("slang.txt");
+            FileReader fr = new FileReader("slangUpdated.txt");
             BufferedReader br = new BufferedReader(fr);
+            String prevKey = "";
             String buffer;
 
             dictionary.clear();
+            history.clear();
 
             while((buffer = br.readLine()) != null) {
                 if (buffer.contains("`")) {
@@ -123,8 +136,14 @@ public class SlangDictionary {
                     for(int i = 0; i < def.length; i++){
                         def[i] = def[i].stripLeading();
                     }
-                    List<String> temp = Arrays.asList(def);
-                    dictionary.put(str[0], temp);
+                    List<String> defs = Arrays.asList(def);
+                    dictionary.put(str[0], defs);
+                    prevKey = str[0];
+                }
+                else{
+                    List<String> defs = new ArrayList<>(dictionary.get(prevKey));
+                    defs.add(buffer);
+                    dictionary.replace(prevKey, defs);
                 }
             }
 

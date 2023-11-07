@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfa3d061-f4b9-4618-a076-5c2b06f3e28d" name="Changes" comment="Add more function (show history, add a slang, delete a slang) (run on terminal).">
+    <list default="true" id="cfa3d061-f4b9-4618-a076-5c2b06f3e28d" name="Changes" comment="Add more function (reset, random slang) (run on terminal).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/slangUpdated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/slangUpdated.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SlangDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SlangDictionary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SlangGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SlangGUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,16 +37,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/1. Study/Code/[SE] - Java/SlangDictionary",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\1. Study\Code\[SE] - Java\SlangDictionary" />
@@ -116,7 +118,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699282188325</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add more function (reset, random slang) (run on terminal).">
+      <created>1699284124588</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699284124588</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,6 +146,17 @@
     <MESSAGE value="Search by word and search by definition (run on terminal), pop up frame UI" />
     <MESSAGE value="Search by word and search by definition (with UI)" />
     <MESSAGE value="Add more function (show history, add a slang, delete a slang) (run on terminal)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add more function (show history, add a slang, delete a slang) (run on terminal)." />
+    <MESSAGE value="Add more function (reset, random slang) (run on terminal)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add more function (reset, random slang) (run on terminal)." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.UnsupportedOperationException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -343,7 +343,6 @@ BRH`Be Right Here
 BSOD`Blue Screen Of Death
 CEPT`Except
 TGAL`Think Globally, Act Locally
-NTNBB`Nguoi thanh nien bung bu
 BRO`Brother|buddy|friend
 STB`Soon To Be
 STA`Surveillance and Target Acquisition
@@ -363,7 +362,7 @@ BSB`Backstreet Boys
 STR`Strength|Short Term Relationship
 BSA`Boy Scouts of America
 BSC`Bachelor of Science
-C4C`Comment for Comment
+C4C`Comment for Comment|Cam for Cam
 STS`Smirk To Self
 TI AMO`I Love You
 BSF`But Seriously Folks
@@ -1444,7 +1443,7 @@ EM`E-Mail|Them
 EP`Extended Play
 F1`Formula One
 EQ`EverQuest (game)
-ER`Emergency Room
+ER`Emergency Room|Indicating hesitation
 DAMAGE`Cost of something
 DILLIC`Does It Look Like I Care
 ET`Extra Terrestrial
@@ -4425,7 +4424,7 @@ TE AMO`I love you (Spanish)
 ELBOW`A pound of marijuana
 (S)`Seriously
 SLAN`Goodbye
-HOODIE`Hooded sweatshirt
+HOODIE`Hooded sweatshirt|Person wearing a hooded sweatshirt
 LUWAMH`Love You with All My Heart
 WAFWOT`What A F***ing Waste Of Time
 JUZ`Just
@@ -6194,7 +6193,7 @@ BOMM`BOOMM
 DURS`Damn, You Are Sexy
 P2W`Pay To Win
 BFFLE`Best Friends For Like Ever
-BOMB`Something really bad
+BOMB`Something really bad|Something really good
 KIFF`Cool
 CAPO`Captain|Mafia boss
 ICBI`I Can't Believe It
@@ -7281,7 +7280,7 @@ S/O`Shout Out|Significant Other
 TROLLING`The act of being a TROLL
 S/N`Serial Number
 .GOV`governments
-AMA`Ask Me Anything
+AMA`Ask Me Anything|Against Medical Advice
 BTBAM`Between The Buried And Me (band)
 AMC`American Motors Corportation
 RNR`Rock 'N Roll
