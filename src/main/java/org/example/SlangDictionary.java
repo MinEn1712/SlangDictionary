@@ -109,8 +109,10 @@ public class SlangDictionary {
         }
         saveSlangDictionary();
     }
-    public void editSlang(String word){
-        System.out.println("Edit");
+    public void editSlang(String word, String def, List<String> defs, int editDefIndex){
+        defs.set(editDefIndex, def);
+        dictionary.replace(word, defs);
+        saveSlangDictionary();
     }
     public void deleteSlang(String word){
         dictionary.remove(word);
@@ -160,15 +162,29 @@ public class SlangDictionary {
         return (String) randomSlang;
     }
 
-    public List<String> quizSlang(){
+    public List<String> slangQuiz(){
         List<String> slangQuiz = new ArrayList<>();
         for(int i = 0; i < 4; i++){
-            slangQuiz.add(randomSlang());
+            String randomSlang = randomSlang();
+            if(slangQuiz.contains(randomSlang)){
+                i--;
+                continue;
+            }
+            slangQuiz.add(randomSlang);
         }
         return slangQuiz;
     }
 
-    public void quizDefinition(){
-
+    public List<String> definitionQuiz(){
+        List<String> defQuiz = new ArrayList<>();
+        for(int i = 0; i < 4; i++){
+            String randomSlang = randomSlang();
+            if(defQuiz.contains(randomSlang)){
+                i--;
+                continue;
+            }
+            defQuiz.add(randomSlang);
+        }
+        return defQuiz;
     }
 }
