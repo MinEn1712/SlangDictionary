@@ -324,7 +324,44 @@ class PopUpFrame extends JFrame implements ActionListener{
                 }
 
                 int randomWord = rand.nextInt(quizQuestion.length);
-                String question = "What is the definition of " + quizQuestion[randomWord];
+                String question = "What is the definition of \"" + quizQuestion[randomWord] + "\"?";
+
+                int option = JOptionPane.showOptionDialog(frame, question, "Slang quiz",
+                        JOptionPane.WHEN_FOCUSED, JOptionPane.QUESTION_MESSAGE, null, quizChoice, quizChoice[0]);
+
+                if(option == randomWord){
+                    JOptionPane.showMessageDialog(frame,
+                            "Correct :)",
+                            "Slang quiz",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+                else{
+                    JOptionPane.showMessageDialog(frame,
+                            "Incorrect :(",
+                            "Slang quiz",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+
+                break;
+            }
+            case 9:{
+                output = slangDict.slangQuiz();
+                Random rand = new Random();
+                String[] quizQuestion = new String[output.size()];
+                String[] quizChoice = output.toArray(new String[0]);
+
+                for(int i = 0; i < output.size(); i++){
+                    List<String> defs = new ArrayList<>(slangDict.searchByWord(quizChoice[i], 0));
+                    if(defs.size() > 1){
+                        int randomDef = rand.nextInt(defs.size());
+                        quizQuestion[i] = defs.get(randomDef);
+                        continue;
+                    }
+                    quizQuestion[i] = defs.get(0);
+                }
+
+                int randomWord = rand.nextInt(quizQuestion.length);
+                String question = "What is the definition of \"" + quizQuestion[randomWord] + "\"?";
 
                 int option = JOptionPane.showOptionDialog(frame, question, "Slang quiz",
                         JOptionPane.WHEN_FOCUSED, JOptionPane.QUESTION_MESSAGE, null, quizChoice, quizChoice[0]);

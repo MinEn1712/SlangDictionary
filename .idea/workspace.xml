@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfa3d061-f4b9-4618-a076-5c2b06f3e28d" name="Changes" comment="Add UI for add a slang function, add confirmation for delete function.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/slangUpdated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/slangUpdated.txt" afterDir="false" />
+    <list default="true" id="cfa3d061-f4b9-4618-a076-5c2b06f3e28d" name="Changes" comment="Add UI for edit a slang, slang quiz function.">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SlangDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SlangDictionary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SlangGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SlangGUI.java" afterDir="false" />
     </list>
@@ -152,7 +150,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699422119815</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add UI for edit a slang, slang quiz function.">
+      <created>1699451420529</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1699451420529</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -179,7 +184,8 @@
     <MESSAGE value="Add UI for generate random slang function." />
     <MESSAGE value="Add UI for delete function." />
     <MESSAGE value="Add UI for add a slang function, add confirmation for delete function." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add UI for add a slang function, add confirmation for delete function." />
+    <MESSAGE value="Add UI for edit a slang, slang quiz function." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add UI for edit a slang, slang quiz function." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

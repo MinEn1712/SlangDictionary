@@ -174,17 +174,4 @@ public class SlangDictionary {
         }
         return slangQuiz;
     }
-
-    public List<String> definitionQuiz(){
-        List<String> defQuiz = new ArrayList<>();
-        for(int i = 0; i < 4; i++){
-            String randomSlang = randomSlang();
-            if(defQuiz.contains(randomSlang)){
-                i--;
-                continue;
-            }
-            defQuiz.add(randomSlang);
-        }
-        return defQuiz;
-    }
 }
