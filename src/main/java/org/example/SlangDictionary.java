@@ -38,14 +38,14 @@ public class SlangDictionary {
             System.out.println("An error occurred.");
         }
     }
-    public List<String> searchByWord(String word){
+    public List<String> searchByWord(String word, int searchType){
         List<String> def = dictionary.get(word);
-        if(def != null){
+        if(def != null && searchType == 1){
             history.add(word);
         }
         return def;
     }
-    public List<String> searchByDefinition(String def){
+    public List<String> searchByDefinition(String def, int searchType){
         List<String> words = new ArrayList<>();
         boolean foundWord = false;
 
@@ -56,7 +56,7 @@ public class SlangDictionary {
             }
         }
 
-        if(foundWord){
+        if(foundWord && searchType == 1){
             history.add(def);
         }
         return words;
@@ -100,14 +100,14 @@ public class SlangDictionary {
             System.out.println("An error occurred.");
         }
     }
-    public void addSlang(String word, List<String> def){
-        if(searchByWord(word) != null){
-            System.out.println("Add another def or override");
-        }
-        else{
+    public void addSlang(String word, List<String> def, int addType){
+        if(addType == 0){
             dictionary.put(word, def);
-            saveSlangDictionary();
         }
+        else if(addType == 1 || addType == 2){
+            dictionary.replace(word, def);
+        }
+        saveSlangDictionary();
     }
     public void editSlang(String word){
         System.out.println("Edit");
@@ -145,6 +145,7 @@ public class SlangDictionary {
                 }
             }
 
+            saveSlangDictionary();
             br.close();
             fr.close();
         }
@@ -159,8 +160,12 @@ public class SlangDictionary {
         return (String) randomSlang;
     }
 
-    public void quizSlang(){
-
+    public List<String> quizSlang(){
+        List<String> slangQuiz = new ArrayList<>();
+        for(int i = 0; i < 4; i++){
+            slangQuiz.add(randomSlang());
+        }
+        return slangQuiz;
     }
 
     public void quizDefinition(){

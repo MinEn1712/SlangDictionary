@@ -9,6 +9,7 @@ public class Main {
         ui.createAndShowGUI();
 //        SlangDictionary slang_dict = new SlangDictionary();
 //        slang_dict.getSlangData();
+//        System.out.println(slang_dict.quizSlang());
 //        System.out.println(slang_dict.searchByWord(":)"));
 //        System.out.println(slang_dict.searchByDefinition("Happy"));
 //        System.out.println(slang_dict.getHistory());
