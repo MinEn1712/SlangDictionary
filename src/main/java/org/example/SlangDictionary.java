@@ -79,15 +79,16 @@ public class SlangDictionary {
 
         try {
             FileWriter fw = new FileWriter("slangUpdated.txt");
-            String slangInfo = "";
+            String slangInfo;
 
             for (Map.Entry<String, List<String>> entry : dictionary.entrySet()) {
                 String key = entry.getKey();
-                slangInfo += key + "`";
+                StringBuilder sb = new StringBuilder();
 
+                slangInfo = sb.append(key).append("`").toString();
                 List<String> value = new ArrayList<>(entry.getValue());
                 for (String def : value) {
-                    slangInfo += def + "|";
+                    slangInfo = sb.append(def).append("|").toString();
                 }
 
                 fw.write(slangInfo.substring(0, slangInfo.length() - 1));
