@@ -3,9 +3,12 @@ package org.example;
 import java.io.*;
 import java.util.*;
 
+//This class is used to create a dictionary.
 public class SlangDictionary {
     public static HashMap<String, List<String>> dictionary = new HashMap<>();
     public static List<String> history = new ArrayList<>();
+
+    //Get the data for the dictionary (words, definitions).
     public void getSlangData(){
         try{
             FileReader fr = new FileReader("slangUpdated.txt");
@@ -38,6 +41,10 @@ public class SlangDictionary {
             System.out.println("An error occurred.");
         }
     }
+
+    //Search by word method.
+    //searchType == 1: for Search by word function, the word searched will be added to the history.
+    //searchType == 0: just search, not add to the history.
     public List<String> searchByWord(String word, int searchType){
         List<String> def = dictionary.get(word);
         if(def != null && searchType == 1){
@@ -45,6 +52,10 @@ public class SlangDictionary {
         }
         return def;
     }
+
+    //Search by definition method.
+    //searchType == 1: for Search by definition function, the definition searched will be added to the history.
+    //searchType == 0: just search, not add to the history.
     public List<String> searchByDefinition(String def, int searchType){
         List<String> words = new ArrayList<>();
         boolean foundWord = false;
@@ -61,9 +72,13 @@ public class SlangDictionary {
         }
         return words;
     }
+
+    //Get history method.
     public List<String> getHistory(){
         return history;
     }
+
+    //Save the dictionary to slangUpdated text file.
     public void saveSlangDictionary(){
         try {
             File file = new File( "slangUpdated.txt");
@@ -101,6 +116,11 @@ public class SlangDictionary {
             System.out.println("An error occurred.");
         }
     }
+
+    //Add a slang method.
+    //addType == 0: Add a new slang.
+    //addType == 1: Overwrite a slang.
+    //addType == 2: Duplicate a slang.
     public void addSlang(String word, List<String> def, int addType){
         if(addType == 0){
             dictionary.put(word, def);
@@ -110,16 +130,24 @@ public class SlangDictionary {
         }
         saveSlangDictionary();
     }
+
+    //Edit a slang method.
+    //def: New definition.
+    //defs: List of old definitions.
+    //editDefIndex: The definition of defs at this index will be changed to def.
     public void editSlang(String word, String def, List<String> defs, int editDefIndex){
         defs.set(editDefIndex, def);
         dictionary.replace(word, defs);
         saveSlangDictionary();
     }
+
+    //Delete a slang method.
     public void deleteSlang(String word){
         dictionary.remove(word);
         saveSlangDictionary();
     }
 
+    //Reset the dictionary method.
     public void resetSlangData(){
         try{
             FileReader fr = new FileReader("slang.txt");
@@ -157,12 +185,14 @@ public class SlangDictionary {
         }
     }
 
+    //Generate a random slang method.
     public String randomSlang(){
         Object[] slangs = dictionary.keySet().toArray();
         Object randomSlang = slangs[new Random().nextInt(slangs.length)];
         return (String) randomSlang;
     }
 
+    //Create slang quiz method, this method will return a list of 4 random slang words (with no duplication).
     public List<String> slangQuiz(){
         List<String> slangQuiz = new ArrayList<>();
         for(int i = 0; i < 4; i++){

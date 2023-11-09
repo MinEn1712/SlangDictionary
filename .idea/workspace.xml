@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfa3d061-f4b9-4618-a076-5c2b06f3e28d" name="Changes" comment="Resolve some conflicts.">
+    <list default="true" id="cfa3d061-f4b9-4618-a076-5c2b06f3e28d" name="Changes" comment="Resolve some conflicts and refactor the code.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SlangDictionary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SlangDictionary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SlangGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SlangGUI.java" afterDir="false" />
@@ -172,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699460994093</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Resolve some conflicts and refactor the code.">
+      <created>1699532641707</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1699532641707</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -202,7 +209,8 @@
     <MESSAGE value="Add UI for edit a slang, slang quiz function." />
     <MESSAGE value="Add UI for quiz." />
     <MESSAGE value="Resolve some conflicts." />
-    <option name="LAST_COMMIT_MESSAGE" value="Resolve some conflicts." />
+    <MESSAGE value="Resolve some conflicts and refactor the code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Resolve some conflicts and refactor the code." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
